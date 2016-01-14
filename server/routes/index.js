@@ -15,4 +15,32 @@ router.get('/', function(req,res,next){ //next is how Express handles middleware
   //next();
 });
 
+/* The following calls handle GET (when /things is hit) and POST (when /add is hit): */
+//This GET call is where we return the results of querying the DB for everything
+router.get('/things',function(req,res,next){
+  return Thing.find({}).exec(function(err,cats){
+    if(err){
+      throw err;
+    } else {
+      res.send(JSON.stringify(things)); // (response is to send JSON verson of the things db)
+      next();
+    }
+  });
+});
+
+router.post('/add',function(req,res,next){
+  console.log('/add');
+  //new instance of Thing object created here (name is set in the angular input field):
+  var thingy = new Thing({name:req.body.name}); //req.body.name is where new name is gathered from user input at client leve.
+  thingy.save(function(err){ //.save is a mongoose functionality. Here is where we call it in order to send the name info back to db.
+    if(err){
+      console.log('meow%',err);
+    } else {
+      console.log('Sending:' + thingy.toJSON);
+      res.send(thing.toJSON());
+      next();
+    }
+  });
+});
+
 module.exports = router; //export order: this is now a module that available for use throughout entire app.
