@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html ng-app="app">
+    <head>
+        <title>MEAN Walkthrough: Walking Skeleton</title>
+        <script src="/vendors/angular/angular.min.js" type="text/javascript"></script> <!--brings in angular-->
+        <script src="/assets/scripts/app.min.js" type="text/javascript"></script> <!--brings in client side app code.-->
+        <!--Check under 'sources' in chrome to make sure both angular and app.min.js files are loading.-->
+    </head>
+    <body>
+    <h2>Welcome to the Walkthrough!</h2>
+    <div ng-controller="IndexController"> <!--This div is being controlled by a "Controller" - angular specific functionality -->
+        <p ng-show="thing.name">Your new thing name is: " {{thing.name}}</p>
+        <p ng-hide="thing.name">Enter your new thing name!</p>
+        <form novalidate> <!-- Data from this form gets bound to a model. -->
+            Name:<input type="text" ng-model="thing.name"/> <br />
+            <input type="submit" ng-click="add(thing)" value="Save" />
+        </form>
+
+        <h4>Things!</h4>
+        <ul>
+            <li ng-repeat="thing in Thing">{{thing.name}}</li>
+            <!-- 'repeat' functionality allows for listing multiple listings of info. Brackets will eventually get bound to variable info. -->
+        </ul>
+    </div>
+    </body>
+</html>

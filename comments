@@ -1,0 +1,8 @@
+dependencies installed (remember your 'npm install <dependency> --save'!):
+express //backend
+mongoose //communication interface for mongo.
+path //helps server down files from server to client.
+grunt //helps us assemble our files.
+uglify //helps minify code.
+angular //front end rendering.
+body parser //helps app render the information thrown at it.
